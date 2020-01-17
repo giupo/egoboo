@@ -15,6 +15,7 @@ following libraries need to be installed:
 	- OpenGL
 	- enet
 	- PhysFS 2.0 or later
+	- ncurses
 
 Install the runtime and development versions of those libraries from the
 package manager of your distribution.
