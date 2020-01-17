@@ -206,7 +206,7 @@ std::shared_ptr<Image> pad_functor<Image>::operator()(const std::shared_ptr<Imag
         for (size_t x = 0; x < oldWidth; ++x)
         {
             auto c = get_pixel(oldSurface, { x, y });
-            set_pixel(newSurface, c, { padding.left + x, padding.top + y });
+            Ego::set_pixel(newSurface, c, { padding.left + x, padding.top + y });
         }
     }
     try
@@ -227,59 +227,59 @@ void blit_functor<Image>::operator()(Image *source, Image *target) const
 
 void blit_functor<Image>::operator()(Image *source, const Rectangle2f& source_rectangle, Image *target) const
 {
-    blit(source->getSurface(), source_rectangle, target->getSurface());
+    Ego::blit(source->getSurface(), source_rectangle, target->getSurface());
 }
 
 void blit_functor<Image>::operator()(Image *source, Image *target, const Point2f& target_position) const
 {
-    blit(source->getSurface(), target->getSurface(), target_position);
+    Ego::blit(source->getSurface(), target->getSurface(), target_position);
 }
 
 void blit_functor<Image>::operator()(Image *source, const Rectangle2f& source_rectangle, Image *target, const Point2f& target_position) const
 {
-    blit(source->getSurface(), source_rectangle, target->getSurface(), target_position);
+    Ego::blit(source->getSurface(), source_rectangle, target->getSurface(), target_position);
 }
 
 void fill_functor<Image>::operator()(Image *image, const Colour3b& color) const
 {
     if (!image) throw idlib::argument_null_error(__FILE__, __LINE__, "image");
-    fill(image->getSurface(), color);
+    Ego::fill(image->getSurface(), color);
 }
 
 void fill_functor<Image>::operator()(Image *image, const Colour3b& color, const Rectangle2f& rectangle) const
 {
     if (!image) throw idlib::argument_null_error(__FILE__, __LINE__, "image");
-    fill(image->getSurface(), color, rectangle);
+    Ego::fill(image->getSurface(), color, rectangle);
 }
 
 void fill_functor<Image>::operator()(Image *image, const Colour4b& color) const
 {
     if (!image) throw idlib::argument_null_error(__FILE__, __LINE__, "image");
-    fill(image->getSurface(), color);
+    Ego::fill(image->getSurface(), color);
 }
 
 void fill_functor<Image>::operator()(Image *image, const Colour4b& color, const Rectangle2f& rectangle) const
 {
     if (!image) throw idlib::argument_null_error(__FILE__, __LINE__, "image");
-    fill(image->getSurface(), color, rectangle);
+    Ego::fill(image->getSurface(), color, rectangle);
 }
 
 Colour4b get_pixel_functor<Image>::operator()(const Image *image, const Point2f& point) const
 {
     if (!image) throw idlib::argument_null_error(__FILE__, __LINE__, "image");
-    return get_pixel(image->getSurface(), point);
+    return Ego::get_pixel(image->getSurface(), point);
 }
 
 void set_pixel_functor<Image>::operator()(Image *image, const Colour3b& color, const Point2f& point) const
 {
     if (!image) throw idlib::argument_null_error(__FILE__, __LINE__, "image");
-    set_pixel(image->getSurface(), color, point);
+    Ego::set_pixel(image->getSurface(), color, point);
 }
 
 void set_pixel_functor<Image>::operator()(Image *image, const Colour4b& color, const Point2f& point) const
 {
     if (!image) throw idlib::argument_null_error(__FILE__, __LINE__, "image");
-    set_pixel(image->getSurface(), color, point);
+    Ego::set_pixel(image->getSurface(), color, point);
 }
 
 } // namespace Ego
