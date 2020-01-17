@@ -77,3 +77,9 @@ gen
 # CMake.
 CMakeFiles
 CMakeCache.txt
+
+# ignore 'build' directory
+build
+
+# ignore VS Code specific files.
+\.vscode
